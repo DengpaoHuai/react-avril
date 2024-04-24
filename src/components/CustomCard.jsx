@@ -17,7 +17,7 @@ const CustomCard = ({ title, footerText, children }) => {
 CustomCard.propTypes = {
   title: PropTypes.string.isRequired,
   footerText: PropTypes.string.isRequired,
-  children: PropTypes.element.isRequired,
+  children: PropTypes.arrayOf(PropTypes.element).isRequired,
 };
 
 export default CustomCard;

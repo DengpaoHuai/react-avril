@@ -1,11 +1,10 @@
 import "./App.css";
-import DisplayPlanets from "./components/DisplayPlanets";
-import MouseMove from "./components/MouseMove";
+import PagePlanet from "./components/PagePlanet";
 
 function App() {
   return (
     <>
-      <DisplayPlanets></DisplayPlanets>
+      <PagePlanet></PagePlanet>
     </>
   );
 }

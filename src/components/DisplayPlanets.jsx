@@ -14,12 +14,18 @@ const DisplayPlanets = () => {
   }, []);*/
 
   useEffect(() => {
-    fetch("https://swapi.py4e.com/api/planets/")
-      .then((results) => results.json())
-      .then((data) => {
-        setPlanets(data.results);
-      });
+    setTimeout(() => {
+      fetch("https://swapi.py4e.com/api/planets/?page=1")
+        .then((results) => results.json())
+        .then((data) => {
+          setPlanets(data.results);
+        });
+    }, 2000);
   }, []);
+
+  const handleClick = (event) => {
+    console.log(event);
+  };
 
   return (
     <div>
@@ -32,6 +38,17 @@ const DisplayPlanets = () => {
           </Fragment>
         );
       })}
+
+      {true !== true ? <p>vrai</p> : <p>faux</p>}
+      {true === true && <p>affichage</p>}
+
+      <button
+        disabled={planets.length === 0 ? true : false}
+        onClick={(event) => handleClick(event)}
+      >
+        Précédent
+      </button>
+      <button onClick={(event) => handleClick(event)}>Suivant</button>
     </div>
   );
 };

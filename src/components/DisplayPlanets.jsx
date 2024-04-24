@@ -1,36 +1,28 @@
 import { Fragment, useEffect, useState } from "react";
+import useFetch from "../hooks/useFetch";
 
 const DisplayPlanets = () => {
-  const [planets, setPlanets] = useState([]);
-  /*
-  const getData = async () => {
-    const results = await fetch("https://swapi.py4e.com/api/planets/");
+  const [planets, setPlanets] = useState({
+    results: [],
+    count: 0,
+    next: null,
+    previous: null,
+  });
+
+  const getData = async (url) => {
+    const results = await fetch(url);
     const response = await results.json();
-    setPlanets(response.results);
+    setPlanets(response);
   };
 
   useEffect(() => {
-    getData();
-  }, []);*/
-
-  useEffect(() => {
-    setTimeout(() => {
-      fetch("https://swapi.py4e.com/api/planets/?page=1")
-        .then((results) => results.json())
-        .then((data) => {
-          setPlanets(data.results);
-        });
-    }, 2000);
+    getData("https://swapi.py4e.com/api/planets/");
   }, []);
-
-  const handleClick = (event) => {
-    console.log(event);
-  };
 
   return (
     <div>
       <h1>Planets</h1>
-      {planets.map((planet) => {
+      {planets.results.map((planet) => {
         return (
           <Fragment key={planet.url}>
             <p>{planet.name}</p>
@@ -39,16 +31,18 @@ const DisplayPlanets = () => {
         );
       })}
 
-      {true !== true ? <p>vrai</p> : <p>faux</p>}
-      {true === true && <p>affichage</p>}
-
       <button
-        disabled={planets.length === 0 ? true : false}
-        onClick={(event) => handleClick(event)}
+        disabled={planets.previous === null}
+        onClick={() => getData(planets.previous)}
       >
         Précédent
       </button>
-      <button onClick={(event) => handleClick(event)}>Suivant</button>
+      <button
+        disabled={planets.next === null}
+        onClick={() => getData(planets.next)}
+      >
+        Suivant
+      </button>
     </div>
   );
 };

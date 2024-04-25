@@ -5,14 +5,14 @@ import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
 import "primereact/resources/themes/bootstrap4-light-blue/theme.css";
 import router from "./router/router";
-import { PrimeReactProvider } from "primereact/api";
+import MovieContextProvider from "./contexts/MovieContextProvider";
 
 function App() {
   return (
     <>
-      <PrimeReactProvider>
+      <MovieContextProvider>
         <RouterProvider router={router} />
-      </PrimeReactProvider>
+      </MovieContextProvider>
     </>
   );
 }

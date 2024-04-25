@@ -1,30 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { MovieContext } from "../contexts/MovieContextProvider";
 
 const ListMovies = () => {
-  const [movies, setMovies] = useState([]);
-
-  useEffect(() => {
-    fetch("https://crudcrud.com/api/046f91d286c8425c94758290f8abbfae/movies")
-      .then((response) => response.json())
-      .then((data) => setMovies(data));
-  }, []);
-
-  const deleteMovieByID = (id) => {
-    fetch(
-      "https://crudcrud.com/api/046f91d286c8425c94758290f8abbfae/movies/" + id,
-      {
-        method: "DELETE",
-      }
-    ).then(() => {
-      setMovies(
-        movies.filter((movie) => {
-          if (movie._id !== id) return true;
-          return false;
-        })
-      );
-    });
-  };
+  const { movies, deleteMovieByID } = useContext(MovieContext);
 
   return (
     <div>

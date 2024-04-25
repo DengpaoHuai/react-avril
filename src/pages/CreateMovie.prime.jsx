@@ -1,8 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import Button from "../components/ui/CustomButton";
-import InputText from "../components/ui/form/InputText";
-import { css } from "@emotion/react";
+import { Button } from "primereact/button";
+import { InputText } from "primereact/inputtext";
 
 export default function CreateMovie() {
   const { register, handleSubmit } = useForm();
@@ -22,17 +21,13 @@ export default function CreateMovie() {
 
   return (
     <form
-      css={css`
-        background-color: hotpink;
-        &:hover {
-        }
-      `}
+      className="flex flex-column gap-2"
       onSubmit={handleSubmit(maSuperbeFunctionDeSubmit)}
     >
       <InputText defaultValue="test" {...register("title")}></InputText>
       <InputText {...register("director")}></InputText>
 
-      <Button title="créer le film"></Button>
+      <Button className="mt-5" severity="info" label="créer le film"></Button>
     </form>
   );
 }

@@ -1,10 +1,11 @@
+import { RouterProvider } from "react-router-dom";
 import "./App.css";
-import PagePlanet from "./components/PagePlanet";
+import router from "./router/router";
 
 function App() {
   return (
     <>
-      <PagePlanet></PagePlanet>
+      <RouterProvider router={router} />
     </>
   );
 }

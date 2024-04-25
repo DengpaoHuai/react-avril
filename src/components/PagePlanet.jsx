@@ -12,7 +12,7 @@ const PagePlanet = () => {
         setPlanet(data.results);
         setCount(data.count);
       });
-  }, [planet]);
+  }, [page]);
 
   return (
     <div>

@@ -34,11 +34,7 @@ const ListMovies = () => {
         {movies.map((movie) => (
           <li key={movie._id}>
             {movie.title} - {movie.director}
-            <button
-              onClick={() => {
-                deleteMovieByID(movie._id);
-              }}
-            >
+            <button onClick={() => deleteMovieByID(movie._id)}>
               supprimer
             </button>
           </li>

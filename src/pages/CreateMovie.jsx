@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import Button from "../components/ui/CustomButton";
 import InputText from "../components/ui/form/InputText";
-import { Button, TextField } from "@mui/material";
-import CustomForm from "../components/ui/form/CustomForm";
+import { css } from "@emotion/react";
 
 export default function CreateMovie() {
   const { register, handleSubmit } = useForm();
@@ -21,15 +21,18 @@ export default function CreateMovie() {
   };
 
   return (
-    <CustomForm onSubmit={handleSubmit(maSuperbeFunctionDeSubmit)}>
-      <TextField
-        label="title"
-        defaultValue="test"
-        {...register("title")}
-      ></TextField>
-      <TextField label="director" {...register("director")}></TextField>
+    <form
+      css={css`
+        background-color: hotpink;
+        &:hover {
+        }
+      `}
+      onSubmit={handleSubmit(maSuperbeFunctionDeSubmit)}
+    >
+      <InputText defaultValue="test" {...register("title")}></InputText>
+      <InputText {...register("director")}></InputText>
 
-      <Button variant="contained">créer le film</Button>
-    </CustomForm>
+      <Button title="créer le film"></Button>
+    </form>
   );
 }

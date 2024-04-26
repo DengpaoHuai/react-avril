@@ -2,12 +2,11 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/ui/CustomButton";
 import InputText from "../components/ui/form/InputText";
-import { useContext } from "react";
-import { MovieContext } from "../contexts/MovieContextProvider";
+import useMovieStore from "../zustand/useMoviesStore";
 
 export default function CreateMovie() {
   const { register, handleSubmit } = useForm();
-  const { createMovie } = useContext(MovieContext);
+  const { addMovie } = useMovieStore();
   const navigate = useNavigate();
 
   const maSuperbeFunctionDeSubmit = async (data) => {
@@ -15,7 +14,7 @@ export default function CreateMovie() {
       navigate("/list_movies");
     })*/
 
-    await createMovie(data);
+    await addMovie(data);
     navigate("/list_movies");
   };
 

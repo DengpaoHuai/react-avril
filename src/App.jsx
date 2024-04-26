@@ -10,9 +10,7 @@ import MovieContextProvider from "./contexts/MovieContextProvider";
 function App() {
   return (
     <>
-      <MovieContextProvider>
-        <RouterProvider router={router} />
-      </MovieContextProvider>
+      <RouterProvider router={router} />
     </>
   );
 }

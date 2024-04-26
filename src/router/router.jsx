@@ -3,6 +3,7 @@ import DemoPage1 from "../pages/DemoPage1";
 import DemoPage2 from "../pages/DemoPage2";
 import CreateMovie from "../pages/CreateMovie";
 import ListMovies from "../pages/ListMovies";
+import MovieLayout from "../layouts/MovieLayout";
 
 const router = createBrowserRouter([
   {
@@ -14,12 +15,17 @@ const router = createBrowserRouter([
     element: <DemoPage2 />,
   },
   {
-    path: "/create_movie",
-    element: <CreateMovie></CreateMovie>,
-  },
-  {
-    path: "/list_movies",
-    element: <ListMovies></ListMovies>,
+    element: <MovieLayout></MovieLayout>,
+    children: [
+      {
+        path: "/create_movie",
+        element: <CreateMovie></CreateMovie>,
+      },
+      {
+        path: "/list_movies",
+        element: <ListMovies></ListMovies>,
+      },
+    ],
   },
 ]);
 

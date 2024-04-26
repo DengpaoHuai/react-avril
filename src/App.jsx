@@ -5,12 +5,15 @@ import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
 import "primereact/resources/themes/bootstrap4-light-blue/theme.css";
 import router from "./router/router";
-import MovieContextProvider from "./contexts/MovieContextProvider";
+import { Provider } from "react-redux";
+import store from "./store/store";
 
 function App() {
   return (
     <>
-      <RouterProvider router={router} />
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
     </>
   );
 }

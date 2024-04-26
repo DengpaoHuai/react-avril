@@ -1,14 +1,16 @@
-import { useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import useMovieStore from "../zustand/useMoviesStore";
+import { useDispatch, useSelector } from "react-redux";
+import { setAllMovies } from "../store/thunksActions/movies.actions";
 
 const ListMovies = () => {
-  const { movies, setAllMovies } = useMovieStore();
+  const { movies, loading } = useSelector((state) => state.movies);
+  const dispatch = useDispatch();
 
   console.log(movies);
 
   useEffect(() => {
-    setAllMovies();
+    dispatch(setAllMovies());
   }, []);
 
   return (
@@ -16,6 +18,7 @@ const ListMovies = () => {
       <h1>List of movies</h1>
       <Link to="/create_movie">Create a movie</Link>
       <ul>
+        {loading && <p>chargement...</p>}
         {movies.map((movie) => (
           <li key={movie._id}>
             {movie.title} - {movie.director}

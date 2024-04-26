@@ -11,6 +11,10 @@ export default function CreateMovie() {
   const navigate = useNavigate();
 
   const maSuperbeFunctionDeSubmit = async (data) => {
+    /* createMovie(data).then(() => {
+      navigate("/list_movies");
+    })*/
+
     await createMovie(data);
     navigate("/list_movies");
   };

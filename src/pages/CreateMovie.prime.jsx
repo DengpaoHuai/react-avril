@@ -8,7 +8,7 @@ export default function CreateMovie() {
   const navigate = useNavigate();
 
   const maSuperbeFunctionDeSubmit = (data) => {
-    fetch("https://crudcrud.com/api/046f91d286c8425c94758290f8abbfae/movies", {
+    fetch("https://crudcrud.com/api/4c6d779733384fc59d6d008314c1352a/movies", {
       method: "POST",
       headers: {
         "content-type": "application/json",

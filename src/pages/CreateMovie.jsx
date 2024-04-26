@@ -2,21 +2,17 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/ui/CustomButton";
 import InputText from "../components/ui/form/InputText";
+import { useContext } from "react";
+import { MovieContext } from "../contexts/MovieContextProvider";
 
 export default function CreateMovie() {
   const { register, handleSubmit } = useForm();
+  const { createMovie } = useContext(MovieContext);
   const navigate = useNavigate();
 
-  const maSuperbeFunctionDeSubmit = (data) => {
-    fetch("https://crudcrud.com/api/046f91d286c8425c94758290f8abbfae/movies", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }).then(() => {
-      navigate("/list_movies");
-    });
+  const maSuperbeFunctionDeSubmit = async (data) => {
+    await createMovie(data);
+    navigate("/list_movies");
   };
 
   return (
